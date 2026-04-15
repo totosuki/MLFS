@@ -1,0 +1,16 @@
+name: dispatch-obsidian-updated
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch event to MLFS-quartz
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          event-type: obsidian-updated
+          token: ${{ secrets.OBSIDIAN_QUARTZ_TOKEN }}
+          repository: totosuki/MLFS-quartz
